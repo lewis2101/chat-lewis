@@ -15,6 +15,7 @@
       :class="$style.btn"
       type="submit"
       :loading="loading"
+      to="/chat"
     >
       Войти
     </v-btn>
