@@ -11,7 +11,7 @@ import {getIdToken} from "firebase/auth"
 import {getNotificationPermission} from "@/utils/service-worker";
 
 onMounted(async () => {
-  console.log('PROJECT RAN')
+  console.log('PROJECT RAN LEEEWIS')
   // const user = await signIntoFireBase(EMAIL, PASSWORD)
   //@ts-ignore
   // await getIdToken(user)
