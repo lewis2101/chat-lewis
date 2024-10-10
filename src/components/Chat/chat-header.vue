@@ -55,7 +55,7 @@ const backShow = computed(() => width.value < TABLET_SIZE)
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  gap: 0;
   padding: 10px 1rem;
 
   &-content {
@@ -71,7 +71,23 @@ const backShow = computed(() => width.value < TABLET_SIZE)
       color: #F4F4F4;
     }
   }
+  &-menu {
+    display: flex;
+  }
 }
+
+@media (max-width: 420px) {
+  .header {
+    gap: 0;
+    padding: 5px .5rem;
+    &-content {
+      &__description {
+        font-size: .75rem;
+      }
+    }
+  }
+}
+
 .avatar {
   cursor: pointer;
 }

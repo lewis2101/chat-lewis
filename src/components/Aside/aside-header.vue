@@ -70,7 +70,7 @@ const menuItems = [
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 1rem;
+  padding: 10px 2.5rem 10px 1rem;
 }
 .count {
   display: flex;
