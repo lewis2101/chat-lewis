@@ -29,7 +29,7 @@ defineProps<{
   width: 100%;
   max-width: 500px;
 
-  padding: 2rem 0 2rem 2rem;
+  padding: 2rem;
 
   @media (max-width: 720px) {
     top: 1rem;
