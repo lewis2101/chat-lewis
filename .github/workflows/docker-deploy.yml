@@ -33,6 +33,8 @@ jobs:
           expect \"*#\"
           send \"cd /opt/frontend/chat-lewis\r\"
           expect \"*#\"
+          send \"docker rmi lewis-front\r\"
+          expect \"*#\"
           send \"docker build -t lewis-front .\r\"
           expect \"*#\"
           send \"docker stop lewis-front || true\r\"
