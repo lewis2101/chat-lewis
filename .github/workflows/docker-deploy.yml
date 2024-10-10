@@ -13,14 +13,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup SSH
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Create SSH key file
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key
+          chmod 600 private_key
 
+      # Подключаемся к серверу и перезапускаем Docker-контейнер
       - name: Deploy Docker container on server
         run: |
-          ssh -o StrictHostKeyChecking=no root@91.147.92.135 "
+          ssh -i private_key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@91.147.92.135 "
             cd /opt/frontend/chat-lewis &&
             docker stop lewis-front || true &&
             docker rm lewis-front || true &&
