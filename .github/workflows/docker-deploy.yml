@@ -39,7 +39,7 @@ jobs:
           expect \"*#\"
           send \"docker rm lewis-front || true\r\"
           expect \"*#\"
-          send \"docker rmi lewis-front .\r\"
+          send \"docker rmi lewis-front\r\"
           expect \"*#\" 
           send \"docker build -t lewis-front .\r\"
           expect \"*#\"
