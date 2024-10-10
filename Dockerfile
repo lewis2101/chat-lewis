@@ -1,4 +1,4 @@
-FROM node:lts-alpine as build-stage
+FROM node:lts-alpine AS build-stage
 
 WORKDIR .
 
@@ -7,7 +7,7 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-FROM nginx:alpine as production-stage
+FROM nginx:alpine AS production-stage
 
 COPY --from=build-stage /dist /usr/share/nginx/html
 
