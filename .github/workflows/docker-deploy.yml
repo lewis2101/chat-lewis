@@ -13,15 +13,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Create SSH key file
+      - name: Setup SSH
         run: |
+          eval "$(ssh-agent -s)"
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key
           chmod 600 private_key
+          ssh-add private_key
+          # Ввод фразы-пароля
+          echo "${{ secrets.SSH_PASSPHRASE }}" | ssh-add - <<< "${{ secrets.SSH_PASSPHRASE }}"
 
-      # Подключаемся к серверу и перезапускаем Docker-контейнер
       - name: Deploy Docker container on server
         run: |
-          ssh -i private_key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@91.147.92.135 "
+          ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@91.147.92.135 "
             cd /opt/frontend/chat-lewis &&
             docker stop lewis-front || true &&
             docker rm lewis-front || true &&
